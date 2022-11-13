@@ -16,9 +16,9 @@ export default function MediaCard() {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
+        alt=""
         height="140"
         image="/static/images/cards/contemplative-reptile.jpg"
-        alt="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -31,16 +31,17 @@ export default function MediaCard() {
           4.Modo de red: gsm / wcdma / td-scdma. frecuencia de red: 900/1800/1900 ghz.
           5.Número de tarjeta sim: doble tarjeta de espera dual. tamaño de la tarjeta sim: ranura estándar para tarjeta sim (25 mm × 15 mm × 0,8 mm).
         </Typography>
+
       </CardContent>
       <CardActions>
-        <Button size="small">Compartir</Button>
-        <Button size="small">Agregar al carrito</Button>
-        <ListItemButton>
-            <ListItemIcon>
-              <AddShoppingCartIcon />
-            </ListItemIcon>
-          </ListItemButton>
+        <Button size="small">Precio 5425</Button>
+        <Button size="small">SKU: 87659875</Button>
+      </CardActions>
+      
+      <CardActions>
+      <Button size="small">Compartir</Button>
+      <Button size="small">Agregar al carrito<AddShoppingCartIcon /></Button>
       </CardActions>
     </Card>
-  );
+    );
 }

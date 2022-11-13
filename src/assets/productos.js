@@ -5,8 +5,8 @@
         "nombre": "Tableta PC 64 GB Blanca",
         "precio": 5425,
         "sku": "TPC64GB",
-        "descripcion": "Tableta PC 64 GB Blanca",
-        "imagen": "https://www.casadelaplaya.com.ar/imagenes/productos/tpc64gb.jpg"
+        "descripcion": "Tableta para ver películas, música y videos ya sea online o desde el almacenamiento",
+        "imagen": "/static/images/cards/contemplative-reptile.jpg"
 
     }
 

@@ -167,6 +167,7 @@ export default function MiniDrawer() {
           <ListItemButton>
             <ListItemIcon>
               <AirplanemodeActiveIcon />
+              
             </ListItemIcon>
             <ListItemText primary="Sent mail" />
           </ListItemButton>
