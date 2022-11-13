@@ -31,6 +31,8 @@ import AccountMenu from "./AccountMenu/AccountMenu";
 import Purchase from "../Badges/Purchase";
 import Checkout from "../Productos/Crear/Checkout";
 
+import Cards from "../Productos/Computo/Cards";
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -133,7 +135,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Developer's e-commerce
+            The Developer's e-commerce
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Purchase />
@@ -220,6 +222,7 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
+        <Cards />
         <Checkout />
       </Box>
     </Box>

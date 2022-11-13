@@ -18,7 +18,7 @@ export default function Purchase() {
   const [count, setCount] = useState(5);
   return (
     <IconButton aria-label="cart">
-      <StyledBadge badgeContent={count} color="secondary">
+      <StyledBadge badgeContent={4} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>
