@@ -25,7 +25,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import StarBorder from "@mui/icons-material/StarBorder";
-import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
+import ActiveIcon from "@mui/icons-material/AirplanemodeActive";
 
 import AccountMenu from "./AccountMenu/AccountMenu";
 import Purchase from "../Badges/Purchase";
@@ -166,8 +166,7 @@ export default function MiniDrawer() {
         >
           <ListItemButton>
             <ListItemIcon>
-              <AirplanemodeActiveIcon />
-              
+              <ActiveIcon />
             </ListItemIcon>
             <ListItemText primary="Sent mail" />
           </ListItemButton>
@@ -176,6 +175,7 @@ export default function MiniDrawer() {
               <DraftsIcon />
             </ListItemIcon>
             <ListItemText primary="Drafts" />
+            
           </ListItemButton>
           <ListItemButton onClick={handleClick}>
             <ListItemIcon>
@@ -190,6 +190,7 @@ export default function MiniDrawer() {
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
+                
                 <ListItemText primary="Starred" />
               </ListItemButton>
             </List>
@@ -221,11 +222,17 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <Cards />
-        <Checkout />
+      
+      <Box component="" sx={{ flexGrow: 1, p: 3 }}>
+      <DrawerHeader />
+        <Cards /> 
       </Box>
+
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <DrawerHeader />
+      <Checkout />
+      </Box>
+      
     </Box>
   );
 }
