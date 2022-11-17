@@ -166,3 +166,188 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
+
+---------------------------------------------------------------------------
+
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState  } from 'react';
+import SendIcon from '@mui/icons-material/Send';
+import { Formik } from 'formik';
+
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        G70-The Developers
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+const theme = createTheme();
+
+export default function SignIn() {
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [formularioEnviado, setFormularioEnviado] = useState(false);
+  const [ alerta, setAlerta ] = useState({});
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    /*const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get("email"),
+      password: data.get("password"),
+    });*/
+    if([email, password].includes('')){
+    setAlerta({mensage: "Todos los Campos son Obligatorios", error: true});
+    return;
+    };
+
+    setAlerta({mensage: "Informacion Enviada Exitosamente"});
+  };
+      const { mensage } = alerta;
+      setTimeout(()=>{
+        setAlerta({})
+      },5000)
+  return (
+
+    <Formik
+      initialValues={{
+        correo: ''
+        
+      }}
+      validate={(valores) => {
+          let errores = {};
+
+          // Validacion Correo
+          if(!valores.correo){
+              errores.correo = 'Por Favor Ingresa un Correo'
+          } else if(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.correo)){
+            errores.correo = 'El Correo solo puede contener letras, numeros, puntos, guiones y guion bajo.'
+          }
+
+          // Validacion Correo
+          if(!valores.contraseña){
+              errores.contraseña = 'Ingresa Una Contraseña'
+          } else if(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.contraseña)){
+                    errores.contraseña = 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.'
+          }
+
+          return errores;
+      }}
+      onSubmit={(valores, {resetForm}) =>{
+          resetForm();
+          console.log('Formulario Enviado')
+          cambiarFormularioEnviado(true);
+          setTimeout(()=> cambiarFormularioEnviado(true), 5000);
+      }}
+    >
+      {( {values, errors, touched, handleSubmit, handleChange, handleBlur} ) => (
+        <ThemeProvider theme={theme}>
+          <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "DodgerBlue" }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Iniciar Sesión
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                noValidate
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  error={false}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="correo"
+                  label="Correo Electronico" 
+                  name="correo" 
+                  autoComplete="correo"
+                  autoFocus
+                  value={values.correo}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.correo && errors.correo && <div className="error">{errors.correo}</div>}
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="contraseña"
+                  label="Contraseña"
+                  type="contraseña"
+                  id="contraseña"
+                  autoComplete="current-contraseña"
+                  value={values.contraseña}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.contraseña && errors.contraseña && <div className="error">{errors.contraseña}</div>}
+                <FormControlLabel
+                  control={<Checkbox value="remember" color="primary" />}
+                  label="Recordarme"
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained" color="success" endIcon={<SendIcon />}
+                  sx={{ mt: 3, mb: 4 }}
+                >
+                  Enviar
+                </Button>
+                {formularioEnviado && <p className="exito">Informacion Enviada Exitosamente</p>}
+                <Grid container>
+                  <Grid item xs>
+                    <Link href="#" variant="body2">
+                      Olvide mi Contraseña?
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Link href="#" variant="body2">
+                      {"¿No tienes una cuenta? Inscribirse"}
+                    </Link>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Box>
+            <Copyright sx={{ mt: 8, mb: 4 }} />
+          </Container>
+        </ThemeProvider>
+        )}  
+    </Formik>
+  );
+}
