@@ -26,10 +26,12 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import StarBorder from "@mui/icons-material/StarBorder";
 import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
+import { Link } from "react-router-dom";
+import Informacion from "../Productos/Crear/Informacion";
 
 import AccountMenu from "./AccountMenu/AccountMenu";
 import Purchase from "../Badges/Purchase";
-import Checkout from "../Productos/Crear/Checkout";
+import Checkout from "../Productos/Crear/CrearProducto";
 
 import Cards from "../Productos/Computo/Cards";
 
@@ -167,7 +169,6 @@ export default function MiniDrawer() {
           <ListItemButton>
             <ListItemIcon>
               <AirplanemodeActiveIcon />
-              
             </ListItemIcon>
             <ListItemText primary="Sent mail" />
           </ListItemButton>
@@ -222,9 +223,10 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+        {/* <DrawerHeader />
         <Cards />
-        <Checkout />
+        <Checkout /> */}
+        <Informacion />
       </Box>
     </Box>
   );
