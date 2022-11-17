@@ -1,3 +1,26 @@
+  const [ email, setEmail ] = React.useState('');
+  const [ leyenda, setleyenda ] = React.useState('');
+  const [ errorEmail, seterrorEmail ] = React.useState(false);
+
+onChange={(e) => {
+              setEmail(e.target.value);
+              if (email.length > 20) {
+                seterrorEmail(true);
+                setleyenda("El Email Tiene mas de 20 Caracteres");
+              } else {
+                seterrorEmail(false);
+                setleyenda("");
+              }
+            } }
+            error={errorEmail}
+            label="Correo Electronico"
+            helperText={leyenda}
+            variant="outlined" 
+
+sx={{'& .MuiTextField-root': {mt: 1 },
+            }}
+
+---------------------------------------------------------------------------------
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
