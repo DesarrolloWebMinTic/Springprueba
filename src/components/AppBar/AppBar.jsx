@@ -27,6 +27,8 @@ import Collapse from "@mui/material/Collapse";
 import StarBorder from "@mui/icons-material/StarBorder";
 import ActiveIcon from "@mui/icons-material/AirplanemodeActive";
 
+import Informacion from "../Productos/Crear/Informacion";
+
 import AccountMenu from "./AccountMenu/AccountMenu";
 import Purchase from "../Badges/Purchase";
 import Checkout from "../Productos/Crear/CrearProducto";
@@ -175,7 +177,6 @@ export default function MiniDrawer() {
               <DraftsIcon />
             </ListItemIcon>
             <ListItemText primary="Drafts" />
-            
           </ListItemButton>
           <ListItemButton onClick={handleClick}>
             <ListItemIcon>
@@ -190,7 +191,7 @@ export default function MiniDrawer() {
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
-                
+
                 <ListItemText primary="Starred" />
               </ListItemButton>
             </List>
@@ -222,17 +223,17 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-      
+
       <Box component="" sx={{ flexGrow: 1, p: 3 }}>
-      <DrawerHeader />
-        <Cards /> 
+        <DrawerHeader />
+        <Cards />
+        <Informacion />
       </Box>
 
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-      <DrawerHeader />
-      <Checkout />
+        <DrawerHeader />
+        <Checkout />
       </Box>
-      
     </Box>
   );
 }
