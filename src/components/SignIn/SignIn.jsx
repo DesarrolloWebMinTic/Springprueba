@@ -37,10 +37,10 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [ alerta, setAlerta ] = useState({});
-   
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [alerta, setAlerta] = useState({});
+
   const handleSubmit = (event) => {
     event.preventDefault();
     /*const data = new FormData(event.currentTarget);
@@ -48,19 +48,18 @@ export default function SignIn() {
       email: data.get("email"),
       password: data.get("password"),
     });*/
-    if([email, password].includes('')){
-      setAlerta({mensage: "Todos los Campos son Obligatorios", error: true});
+    if ([email, password].includes("")) {
+      setAlerta({ mensage: "Todos los Campos son Obligatorios", error: true });
       return;
-    };
+    }
 
-    setAlerta({mensage: "Informacion Enviada Exitosamente"});
+    setAlerta({ mensage: "Informacion Enviada Exitosamente" });
   };
-    const { mensage } = alerta;
-    setTimeout(()=>{
-      setAlerta({})
-    },5000)
+  const { mensage } = alerta;
+  setTimeout(() => {
+    setAlerta({});
+  }, 5000);
   return (
-    
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -90,13 +89,13 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Correo Electronico" 
-              name="email" 
+              label="Correo Electronico"
+              name="email"
               autoComplete="email"
               autoFocus
               value={email}
               helperText="correo@correo.com"
-              onChange={ e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               margin="normal"
@@ -109,17 +108,19 @@ export default function SignIn() {
               autoComplete="current-password"
               value={password}
               helperText="Campo Obligatorio."
-              onChange={ e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Recordarme"
             />
-            { mensage && <p key={alerta.mensage }>{alerta.mensage}</p> }
+            {mensage && <p key={alerta.mensage}>{alerta.mensage}</p>}
             <Button
               type="submit"
               fullWidth
-              variant="contained" color="success" endIcon={<SendIcon />}
+              variant="contained"
+              color="success"
+              endIcon={<SendIcon />}
               sx={{ mt: 3, mb: 4 }}
             >
               Enviar

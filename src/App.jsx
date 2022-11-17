@@ -6,14 +6,15 @@ import SignIn from "./components/SignIn/SignIn";
 import CrearProducto from "./components/Productos/Crear/CrearProducto";
 import Informacion from "./components/Productos/Crear/Informacion";
 import MediaCard from "./components/Productos/Computo/Cards";
+import Content from "./components/AppBar/Content";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <AppBar />  
-      {/* <SignIn /> */}
+      <AppBar />
+      <Content />
     </>
   );
 }
