@@ -290,12 +290,20 @@ export default function MiniDrawer() {
           //   </ListSubheader>
           // }
         >
-          <Link to={"/"}>
+          <Link to={"/listarfer"}>
             <ListItemButton>
               <ListItemIcon>
                 <AddCardSharpIcon />
               </ListItemIcon>
-              <ListItemText primary="Productos" />
+              <ListItemText primary="Listar productos" />
+            </ListItemButton>
+          </Link>
+          <Link to={"/crear"}>
+            <ListItemButton>
+              <ListItemIcon>
+                <AddCardSharpIcon />
+              </ListItemIcon>
+              <ListItemText primary="Crear productos" />
             </ListItemButton>
           </Link>
           <ListItemButton onClick={handleClick}>
@@ -365,10 +373,10 @@ export default function MiniDrawer() {
           </ListItem>
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Checkout />
-      </Box>
+      </Box> */}
          
     </Box>
   );
