@@ -11,6 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 
+
 export default function MediaCard() {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -18,7 +19,7 @@ export default function MediaCard() {
         component="img"
         alt=""
         height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image="E:\Sprintprueba\src\components\Productos\Computo\TabletPC_64GB.html"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

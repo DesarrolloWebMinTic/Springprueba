@@ -12,10 +12,8 @@ function App() {
 
   return (
     <>
-      <AppBar />
+      <AppBar />  
       {/* <SignIn /> */}
-      {/* <MediaCard /> */}
-      {/* <Informacion /> */}
     </>
   );
 }
