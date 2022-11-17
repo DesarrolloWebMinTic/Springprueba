@@ -25,11 +25,15 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import StarBorder from "@mui/icons-material/StarBorder";
-import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
+import ActiveIcon from "@mui/icons-material/AirplanemodeActive";
+
+import Informacion from "../Productos/Crear/Informacion";
 
 import AccountMenu from "./AccountMenu/AccountMenu";
 import Purchase from "../Badges/Purchase";
-import Checkout from "../Productos/Crear/Checkout";
+import Checkout from "../Productos/Crear/CrearProducto";
+
+import Cards from "../Productos/Computo/Cards";
 
 const drawerWidth = 240;
 
@@ -133,7 +137,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Developer's e-commerce
+            The Developer's e-commerce
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Purchase />
@@ -164,7 +168,7 @@ export default function MiniDrawer() {
         >
           <ListItemButton>
             <ListItemIcon>
-              <AirplanemodeActiveIcon />
+              <ActiveIcon />
             </ListItemIcon>
             <ListItemText primary="Sent mail" />
           </ListItemButton>
@@ -187,6 +191,7 @@ export default function MiniDrawer() {
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
+
                 <ListItemText primary="Starred" />
               </ListItemButton>
             </List>
@@ -218,6 +223,13 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
+
+      <Box component="" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+        <Cards />
+        <Informacion />
+      </Box>
+
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Checkout />
