@@ -14,11 +14,14 @@ import products from "../../../assets/productos.json";
 
 import Cards from "./Cards";
 
+<<<<<<< HEAD
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
+=======
+>>>>>>> main
 import TablatImg from "./TabletPC_64GB.jpg";
 
 export default function Listarfer() {
@@ -30,6 +33,7 @@ export default function Listarfer() {
 
   return <div>{renderCards()}</div>;
 }
+<<<<<<< HEAD
 
 /* import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -65,3 +69,5 @@ export default function RowAndColumnSpacing() {
     </Box>
   );
 } */
+=======
+>>>>>>> main

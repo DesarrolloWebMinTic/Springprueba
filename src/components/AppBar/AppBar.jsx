@@ -26,12 +26,19 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import StarBorder from "@mui/icons-material/StarBorder";
 import ActiveIcon from "@mui/icons-material/AirplanemodeActive";
+import AddCardSharpIcon from "@mui/icons-material/AddCardSharp";
+import RoomSharpIcon from "@mui/icons-material/RoomSharp";
+import ContactPageSharpIcon from "@mui/icons-material/ContactPageSharp";
+import { Link } from "react-router-dom";
+
+import Informacion from "../Productos/Crear/Informacion";
 
 import AccountMenu from "./AccountMenu/AccountMenu";
 import Purchase from "../Badges/Purchase";
-import Checkout from "../Productos/Crear/Checkout";
+import Checkout from "../Productos/Crear/CrearProducto";
 
 import Cards from "../Productos/Computo/Cards";
+import products from "../../assets/productos.json";
 
 const drawerWidth = 240;
 
@@ -101,6 +108,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer() {
+  console.log(products[0]);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [openD, setOpenD] = React.useState(true);
@@ -117,6 +125,124 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  // return (
+  //   <Box sx={{ display: "flex" }}>
+  //     <CssBaseline />
+  //     <AppBar position="fixed" open={open}>
+  //       <Toolbar>
+  //         <IconButton
+  //           color="inherit"
+  //           aria-label="open drawer"
+  //           onClick={handleDrawerOpen}
+  //           edge="start"
+  //           sx={{
+  //             marginRight: 5,
+  //             ...(open && { display: "none" }),
+  //           }}
+  //         >
+  //           <MenuIcon />
+  //         </IconButton>
+  //         <Typography variant="h6" noWrap component="div">
+  //           The Developer's e-commerce
+  //         </Typography>
+  //         <Box sx={{ flexGrow: 1 }} />
+  //         <Purchase />
+  //         <AccountMenu />
+  //         <Box />
+  //       </Toolbar>
+  //     </AppBar>
+  //     <Drawer variant="permanent" open={open}>
+  //       <DrawerHeader>
+  //         <IconButton onClick={handleDrawerClose}>
+  //           {theme.direction === "rtl" ? (
+  //             <ChevronRightIcon />
+  //           ) : (
+  //             <ChevronLeftIcon />
+  //           )}
+  //         </IconButton>
+  //       </DrawerHeader>
+  //       <Divider />
+  //       <List
+  //         sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+  //         component="nav"
+  //         aria-labelledby="nested-list-subheader"
+  //         // subheader={
+  //         //   <ListSubheader component="div" id="nested-list-subheader">
+  //         //     Nested List Items
+  //         //   </ListSubheader>
+  //         // }
+  //       >
+  //         <ListItemButton>
+  //           <ListItemIcon>
+  //             <ActiveIcon />
+  //           </ListItemIcon>
+  //           <ListItemText primary="Sent mail" />
+  //         </ListItemButton>
+  //         <ListItemButton>
+  //           <ListItemIcon>
+  //             <DraftsIcon />
+  //           </ListItemIcon>
+  //           <ListItemText primary="Drafts" />
+  //         </ListItemButton>
+  // <ListItemButton onClick={handleClick}>
+  //   <ListItemIcon>
+  //     <InboxIcon />
+  //   </ListItemIcon>
+  //   <ListItemText primary="Inbox" />
+  //   {openD ? <ExpandLess /> : <ExpandMore />}
+  // </ListItemButton>
+  // <Collapse in={openD} timeout="auto" unmountOnExit>
+  //   <List component="div" disablePadding>
+  //     <ListItemButton sx={{ pl: 4 }}>
+  //       <ListItemIcon>
+  //         <StarBorder />
+  //       </ListItemIcon>
+
+  //       <ListItemText primary="Starred" />
+  //     </ListItemButton>
+  //   </List>
+  // </Collapse>
+  //       </List>
+  //       <Divider />
+  //       <List>
+  //         {["All mail", "Trash", "Spam"].map((text, index) => (
+  //           <ListItem key={text} disablePadding sx={{ display: "block" }}>
+  //             <ListItemButton
+  //               sx={{
+  //                 minHeight: 48,
+  //                 justifyContent: open ? "initial" : "center",
+  //                 px: 2.5,
+  //               }}
+  //             >
+  //               <ListItemIcon
+  //                 sx={{
+  //                   minWidth: 0,
+  //                   mr: open ? 3 : "auto",
+  //                   justifyContent: "center",
+  //                 }}
+  //               >
+  //                 ICONO AQUI
+
+  //               </ListItemIcon>
+  //               <ListItemText primary={"Lugares"} sx={{ opacity: open ? 1 : 0 }} />
+  //             </ListItemButton>
+  //           </ListItem>
+  //         ))}
+  //       </List>
+  //     </Drawer>
+
+  //     <Box component="" sx={{ flexGrow: 1, p: 3 }}>
+  //       <DrawerHeader />
+  //       <Cards producto={products[0]} />
+  //       <Informacion />
+  //     </Box>
+
+  //     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+  //       <DrawerHeader />
+  //       <Checkout />
+  //     </Box>
+  //   </Box>
+  // );
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -135,7 +261,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            The Developer's e-commerce
+            Developer's e-commerce
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Purchase />
@@ -164,19 +290,22 @@ export default function MiniDrawer() {
           //   </ListSubheader>
           // }
         >
-          <ListItemButton>
-            <ListItemIcon>
-              <ActiveIcon />
-            </ListItemIcon>
-            <ListItemText primary="Sent mail" />
-          </ListItemButton>
-          <ListItemButton>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Drafts" />
-            
-          </ListItemButton>
+          <Link to={"/listarfer"}>
+            <ListItemButton>
+              <ListItemIcon>
+                <AddCardSharpIcon />
+              </ListItemIcon>
+              <ListItemText primary="Listar productos" />
+            </ListItemButton>
+          </Link>
+          <Link to={"/crear"}>
+            <ListItemButton>
+              <ListItemIcon>
+                <AddCardSharpIcon />
+              </ListItemIcon>
+              <ListItemText primary="Crear productos" />
+            </ListItemButton>
+          </Link>
           <ListItemButton onClick={handleClick}>
             <ListItemIcon>
               <InboxIcon />
@@ -190,49 +319,65 @@ export default function MiniDrawer() {
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
-                
                 <ListItemText primary="Starred" />
               </ListItemButton>
             </List>
           </Collapse>
         </List>
-        <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+          <ListItem key={"Lugares"} disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                <RoomSharpIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary={"Lugares"}
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem key={"Contacto"} disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <ContactPageSharpIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary={"Contacto"}
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
-      
-      <Box component="" sx={{ flexGrow: 1, p: 3 }}>
-      <DrawerHeader />
-        <Cards /> 
-      </Box>
-
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-      <DrawerHeader />
-      <Checkout />
-      </Box>
-      
+      {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+        <Checkout />
+      </Box> */}
+         
     </Box>
   );
 }

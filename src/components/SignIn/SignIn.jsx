@@ -12,6 +12,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState  } from 'react';
+import SendIcon from '@mui/icons-material/Send';
+//import { Formik } from 'formik';
 
 function Copyright(props) {
   return (
@@ -23,7 +26,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        G70-The Developers
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -34,15 +37,28 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [alerta, setAlerta] = useState({});
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    /*const data = new FormData(event.currentTarget);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
-    });
-  };
+    });*/
+    if ([email, password].includes("")) {
+      setAlerta({ mensage: "Todos los Campos son Obligatorios", error: true });
+      return;
+    }
 
+    setAlerta({ mensage: "Informacion Enviada Exitosamente" });
+  };
+  const { mensage } = alerta;
+  setTimeout(() => {
+    setAlerta({});
+  }, 5000);
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -55,11 +71,11 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "DodgerBlue" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Iniciar Sesión
           </Typography>
           <Box
             component="form"
@@ -68,46 +84,56 @@ export default function SignIn() {
             sx={{ mt: 1 }}
           >
             <TextField
+              error={false}
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Correo Electronico"
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              helperText="correo@correo.com"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               margin="normal"
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Contraseña"
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              helperText="Campo Obligatorio."
+              onChange={(e) => setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label="Recordarme"
             />
+            {mensage && <p key={alerta.mensage}>{alerta.mensage}</p>}
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              color="success"
+              endIcon={<SendIcon />}
+              sx={{ mt: 3, mb: 4 }}
             >
-              Sign In
+              Enviar
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Olvide mi Contraseña?
                 </Link>
               </Grid>
               <Grid item>
                 <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {"¿No tienes una cuenta? Inscribirse"}
                 </Link>
               </Grid>
             </Grid>
