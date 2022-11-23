@@ -11,8 +11,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import products from "../../../assets/productos.json";
-
 import TablatImg from "./TabletPC_64GB.jpg";
+
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 
 export default function Cards({ producto }) {
   console.log(producto);
@@ -44,6 +48,29 @@ export default function Cards({ producto }) {
           Agregar al carrito
           <AddShoppingCartIcon />
         </Button>
+      </CardActions>
+
+      <CardActions>
+        <Box sx={{ width: "100%" }}>
+          <Grid
+            container
+            rowSpacing={1}
+            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          >
+            <Grid xs={6}>
+              <Item>1</Item>
+            </Grid>
+            <Grid xs={6}>
+              <Item>2</Item>
+            </Grid>
+            <Grid xs={6}>
+              <Item>3</Item>
+            </Grid>
+            <Grid xs={6}>
+              <Item>4</Item>
+            </Grid>
+          </Grid>
+        </Box>
       </CardActions>
     </Card>
   );
