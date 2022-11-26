@@ -1,78 +1,78 @@
 import { createContext, useState, useEffect } from "react";
-import clienteAxios from '../config/axios';
+import clienteAxios from "../config/axios";
 
-const VentaContext = createContext()
+const VentaContext = createContext();
 
 import useProductos from "../hooks/useProductos";
 
 const VentaProvider = ({ children }) => {
+  //   const [productos, setProductos] = useState(
+  //     JSON.parse(localStorage.getItem("productos")) ?? []
+  //   );
+  const { productos } = useProductos();
+  //   const [productos, setProductos] = useProductos();
 
-    const [productos, setProductos] = useState(JSON.parse(localStorage.getItem('productos')) ?? []);
-    //const [productos, setProductos] = useProductos();
+  const [ventas, setVentas] = useState([]);
+  // JSON.parse(localStorage.getItem('venta')) ?? []
+  const [ventaState, setVentaState] = useState({});
 
-    const [ventas, setVentas] = useState([])
-    // JSON.parse(localStorage.getItem('venta')) ?? []
-    const [ventaState, setVentaState] = useState({})
+  const [existe, setExiste] = useState(false);
+  const [precioTotal, setPrecioTotal] = useState(0);
 
-    const [existe, setExiste] = useState(false)
-    const [precioTotal, setPrecioTotal] = useState(0)
+  useEffect(() => {
+    const obtenerVentas = async () => {
+      try {
+        const { data } = await clienteAxios("/ventas/get");
+        setVentas(data);
+      } catch (error) {
+        console.log("Error: " + error.message);
+      }
+    };
+    obtenerVentas();
+  }, [ventas]);
 
-    useEffect(() => {
-        const obtenerVentas = async () =>{
-            try {
-               const { data } = await clienteAxios('/ventas/get');
-               setVentas(data);
-               console.log(data);
-            } catch (error) {
-                console.log("Error: " + error.message);
-            }
-        };
-          obtenerVentas();   
-    }, [ventas])
+  const añadirProducto = (_id) => {
+    // console.log(_id);
+    // //Buscar producto existente
+    const productoFiltrado = productos.find((producto) => producto._id == _id);
+    console.log(productoFiltrado);
+    // console.log(productos);
 
-    const añadirProducto = _id => {
+    //setPrecioTotal(Number(productoFiltrado.precio) + Number(precioTotal));
 
-        //Buscar producto existente
-        //const productoFiltrado = productos.find(producto => producto._id == _id);
-        //console.log(productoFiltrado);
-        //console.log(productos);
+    // if (!productoFiltrado) {
+    //   return console.log("Producto no encontrado");
+    // }
+    // const objetoVenta = {
+    //   id: productoFiltrado.id,
+    //   nombre: productoFiltrado.nombre,
+    //   descripcion: productoFiltrado.descripcion,
+    //   precio: productoFiltrado.precio,
+    //   cantidad: 1,
+    // };
 
-        /*setPrecioTotal(Number(productoFiltrado.precio) + Number(precioTotal))
-        
+    // // setVentaState(objetoVenta);
+    // console.log(objetoVenta);
+    // venta.find((item) =>
+    //   ventaState.id === item.id ? setExiste(true) : setVenta(false)
+    // );
 
-        if (!productoFiltrado) {
-            return console.log('Producto no encontrado')
-        }
-        const objetoVenta = {
-            id: productoFiltrado.id,
-            nombre: productoFiltrado.nombre,
-            descripcion: productoFiltrado.descripcion,
-            precio: productoFiltrado.precio,
-            cantidad: 1
-        }
+    // setVenta([...venta, ventaState]);
+  };
 
-        setVentaState(objetoVenta)
-        venta.find(item => ventaState.id === item.id ? setExiste(true) : setVenta(false))
-        
-        setVenta([...venta, ventaState])*/
-        
-    }
+  return (
+    <VentaContext.Provider
+      value={{
+        añadirProducto,
+        ventas,
+        precioTotal,
+      }}
+    >
+      {children}
+    </VentaContext.Provider>
+  );
+};
 
-    return (
-        <VentaContext.Provider
-            value={{
-                añadirProducto,
-                ventas, 
-                precioTotal
-            }}>
+export { VentaProvider };
 
-            {children}
-        </VentaContext.Provider>
-    )
-}
-
-export {
-    VentaProvider
-}
-
-export default VentaContext
+export default VentaContext;

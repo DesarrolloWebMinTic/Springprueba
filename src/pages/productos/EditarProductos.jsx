@@ -1,15 +1,20 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2'
-import { Navigate  } from 'react-router-dom';
+import Swal from "sweetalert2";
+import { Navigate } from "react-router-dom";
 import useProductos from "../../hooks/useProductos";
 
-
 const EditarProductos = ({ id, setModalEditar }) => {
-
   const { register, handleSubmit } = useForm();
-  
-  const { obtenerProducto, productoState, eliminado, updateProductos, setProductoState, editado } = useProductos();
+
+  const {
+    obtenerProducto,
+    productoState,
+    eliminado,
+    updateProductos,
+    setProductoState,
+    editado,
+  } = useProductos();
 
   useEffect(() => {
     obtenerProducto(id);
@@ -20,19 +25,17 @@ const EditarProductos = ({ id, setModalEditar }) => {
   //console.log(_id, nombre, description, typeof(precio), stock);
 
   const onSubmit = async (datos) => {
-
     //console.log(datos.precio);
 
     Swal.fire({
-      title: 'Quieres guardar los cambios?',
+      title: "Quieres guardar los cambios?",
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: 'Guardar',
+      confirmButtonText: "Guardar",
       denyButtonText: `No Guardar`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-
         const formData = new FormData();
         formData.append("id", id);
         formData.append("image", datos.file[0]);
@@ -42,30 +45,28 @@ const EditarProductos = ({ id, setModalEditar }) => {
         formData.append("stock", datos.stock);
 
         updateProductos(_id, formData);
-        Swal.fire('Guardado!', '', 'success')
+        Swal.fire("Guardado!", "", "success");
 
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Tu Producto ha sido guardado.',
+          position: "top-end",
+          icon: "success",
+          title: "Tu Producto ha sido guardado.",
           showConfirmButton: false,
-          timer: 1500
-        })
-
+          timer: 1500,
+        });
       } else if (result.isDenied) {
-        Swal.fire('Los cambios no se guardaron', '', 'info')
+        Swal.fire("Los cambios no se guardaron", "", "info");
       }
-    })
+    });
   };
-
 
   return (
     <div className="flex justify-center bg-slate-500 absolute w-full h-screen top-0 bg-opacity-60 mt-24">
-      {eliminado && <Navigate to="/productos"/>}
-      {editado && <Navigate to="/productos"/>}
+      {eliminado && <Navigate to="/productos" />}
+      {editado && <Navigate to="/productos" />}
       <div className="h-full w-5/6">
         <div className="w-full py-5 flex items-center h-full mt-24">
-          <form 
+          <form
             className="px-5 mx-auto py-5 sm:px-9 sm:w-5/6 md:w-4/5 lg:w-3/4 shadow-lg bg-white rounded-xl"
             onSubmit={handleSubmit(onSubmit)}
           >
@@ -76,11 +77,10 @@ const EditarProductos = ({ id, setModalEditar }) => {
               X
             </button>
 
-            <h1 className="font-bold text-6xl uppercase text-center w-full mx-auto">
-              Edita tu <span className="text-sky-700">producto</span>
+            <h1 className="font-bold text-3xl uppercase text-center w-full mx-auto">
+              Edita tu <span className="text-red-400  ">producto</span>
             </h1>
 
-            
             <div className="mb-9 flex justify-center">
               <img
                 src={image ? `${image.url}` : ""}
@@ -99,11 +99,13 @@ const EditarProductos = ({ id, setModalEditar }) => {
                 name="nombre"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
                 placeholder="ej: Desinfectante"
-                value={nombre || ''}
-                onChange={ e => setProductoState({
-                  ...productoState, 
-                  [e.target.name] : e.target.value
-                })}
+                value={nombre || ""}
+                onChange={(e) =>
+                  setProductoState({
+                    ...productoState,
+                    [e.target.name]: e.target.value,
+                  })
+                }
                 {...register("nombre")}
               />
             </div>
@@ -116,11 +118,13 @@ const EditarProductos = ({ id, setModalEditar }) => {
                 name="descripcion"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100 h-52"
                 placeholder="..."
-                value={description || ''}
-                onChange={ e => setProductoState({
-                  ...productoState, 
-                  [e.target.name] : e.target.value
-                })}
+                value={description || ""}
+                onChange={(e) =>
+                  setProductoState({
+                    ...productoState,
+                    [e.target.name]: e.target.value,
+                  })
+                }
                 {...register("description")}
               />
             </div>
@@ -136,11 +140,13 @@ const EditarProductos = ({ id, setModalEditar }) => {
                   name="precio"
                   className="placeholder-slate-400 p-2 w-full bg-slate-100"
                   placeholder="ej: 200000"
-                  value={precio || ''}
-                  onChange={ e => setProductoState({
-                    ...productoState, 
-                    [e.target.name] : e.target.value
-                  })}
+                  value={precio || ""}
+                  onChange={(e) =>
+                    setProductoState({
+                      ...productoState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
                   {...register("precio")}
                 />
               </div>
@@ -155,12 +161,14 @@ const EditarProductos = ({ id, setModalEditar }) => {
                 name="stock"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
                 placeholder="ej: 5"
-                value={stock || ''}
-                  onChange={ e => setProductoState({
-                    ...productoState, 
-                    [e.target.name] : e.target.value
-                  })}
-                  {...register("stock")}
+                value={stock || ""}
+                onChange={(e) =>
+                  setProductoState({
+                    ...productoState,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+                {...register("stock")}
               />
             </div>
             <div className="mb-5">

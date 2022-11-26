@@ -1,14 +1,13 @@
-import { Navigate  } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 import useProductos from "../../hooks/useProductos";
 
 import Navbar from "../../components/Navbar";
-import Alerta from '../../components/Alerta';
+import Alerta from "../../components/Alerta";
 
 const FormularioProductos = () => {
-
   const { register, handleSubmit } = useForm();
   const { submitProducto, guardado } = useProductos();
 
@@ -22,27 +21,26 @@ const FormularioProductos = () => {
     formData.append("description", datos.description);
     formData.append("precio", datos.precio);
     formData.append("stock", datos.stock);
-    
+
     submitProducto(formData);
 
     Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Tu Producto ha sido guardado.',
+      position: "top-end",
+      icon: "success",
+      title: "Tu Producto ha sido guardado.",
       showConfirmButton: false,
-      timer: 1500
-    })
-
+      timer: 1500,
+    });
   };
 
   return (
     <>
       <Navbar texto="Productos" ruta="" />
       <div className=" w-full justify-center h-5/6 items-center mt-24">
-        {guardado && <Navigate to="/productos"/>} 
+        {guardado && <Navigate to="/productos" />}
         <div className="w-full">
-          <h1 className="font-bold text-6xl uppercase text-center w-full mx-auto">
-            Registra tus <span className="text-sky-700">productos</span>
+          <h1 className="font-bold text-3xl uppercase text-center w-full mx-auto">
+            Registra tus <span className="text-red-400">productos</span>
           </h1>
 
           <form
@@ -109,13 +107,13 @@ const FormularioProductos = () => {
                 type="file"
                 id="image"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                {...register("file")} 
+                {...register("file")}
               />
             </div>
             <input
               type="submit"
               value="Guardar"
-              className="uppercase bg-sky-700 text-white p-2 rounded-md w-full cursor-pointer"
+              className="uppercase bg-red-400 text-white p-2 rounded-md w-full cursor-pointer"
             />
           </form>
         </div>

@@ -1,18 +1,17 @@
 import { NavLink } from "react-router-dom";
-import useVenta from '../../hooks/useVenta'
+import useVenta from "../../hooks/useVenta";
 
 const Producto = ({ producto }) => {
   const { _id, nombre, precio, stock, image } = producto;
 
-  const { añadirProducto } = useVenta()
+  const { añadirProducto } = useVenta();
   //console.log(producto);
 
   return (
     <div className="flex flex-col h-1/2 border rounded-lg w-60 bg-white hover:scale-105 overflow-hidden">
-
       <NavLink to={`detalle-producto/${_id}`}>
         <img src={image.url} alt={nombre} className="h-56 w-96 border-b" />
-      </NavLink> 
+      </NavLink>
 
       <NavLink
         id={_id}
@@ -33,8 +32,8 @@ const Producto = ({ producto }) => {
       </NavLink>
       <button
         type="button"
-        className='bg-sky-500 text-white p-2  uppercase  font-medium w-full hover:bg-sky-700 transition-colors'
-        onClick={e => añadirProducto(_id)}
+        className="bg-red-400 text-white p-2  uppercase  font-medium w-full hover:bg-sky-700 transition-colors"
+        onClick={(e) => añadirProducto(_id)}
       >
         Añadir al Carrito
       </button>
