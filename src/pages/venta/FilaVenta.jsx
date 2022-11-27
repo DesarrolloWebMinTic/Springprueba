@@ -31,7 +31,7 @@ const FilaVenta = ({ venta }) => {
         <span className="font-medium text-lg">121321321</span>
       </td>
       <td>
-        <span className="font-medium text-lg">Ivan Castro</span>
+        <span className="font-medium text-lg">Alejandro Salazar</span>
       </td>
       <td>
         <span className="font-medium text-lg">21/11/2022</span>
