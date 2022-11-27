@@ -66,7 +66,7 @@ const Login = () => {
           </h1>
           <h2 className="text-2xl text-center uppercase text-blue-400 mb-5">
             para desarrolladores{" "}
-            {/* <span className="text-sky-700">productos</span>  */}
+            {/* <span className="text-red-400">productos</span>  */}
           </h2>
           <form
             className="p-4 mx-auto w-96 sm:px-9 mt-8 shadow-md"
@@ -103,7 +103,7 @@ const Login = () => {
             {/* <input
               type="submit"
               value="Ingresar"
-              className="uppercase bg-sky-700 text-white p-2 rounded-md w-full"
+              className="uppercase bg-red-400 text-white p-2 rounded-md w-full"
             /> */}
             <button
               type="submit"

@@ -47,7 +47,7 @@ const CambiarPassword = () => {
       <div className=" w-full h-5/6">
         <div className="w-full flex flex-col">
           <h1 className="font-bold text-6xl uppercase text-center w-full mx-auto">
-            Cambia tu <span className="text-sky-700">contraseña</span>
+            Cambia tu <span className="text-red-400">contraseña</span>
           </h1>
           <div className="mx-auto my-5">
             <button className="hover:scale-110 transition-all pt-10">

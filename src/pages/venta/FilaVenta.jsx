@@ -40,7 +40,7 @@ const FilaVenta = ({ venta }) => {
         <button
           className={`${
             vigente
-              ? "bg-sky-700  hover:bg-sky-600 "
+              ? "bg-red-400  hover:bg-sky-600 "
               : "bg-red-700 hover:bg-red-600 focus:outline-none disabled:opacity-75"
           }  text-white p-2 uppercase text-sm font-medium rounded-lg transition-colors`}
           onClick={(e) => showSwal(e)}

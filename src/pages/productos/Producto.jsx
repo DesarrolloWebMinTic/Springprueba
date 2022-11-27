@@ -32,7 +32,7 @@ const Producto = ({ producto }) => {
       </NavLink>
       <button
         type="button"
-        className="bg-red-400 text-white p-2  uppercase  font-medium w-full hover:bg-sky-700 transition-colors"
+        className="bg-red-400 text-white p-2  uppercase  font-medium w-full hover:bg-red-400 transition-colors"
         onClick={(e) => añadirProducto(_id)}
       >
         Añadir al Carrito

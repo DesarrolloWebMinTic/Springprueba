@@ -186,7 +186,7 @@ const EditarProductos = ({ id, setModalEditar }) => {
             <input
               type="submit"
               value="Guardar"
-              className="font-medium uppercase bg-sky-700 text-white p-2 rounded-md w-full cursor-pointer hover:bg-sky-500"
+              className="font-medium uppercase bg-red-400 text-white p-2 rounded-md w-full cursor-pointer hover:bg-sky-500"
             />
           </form>
         </div>

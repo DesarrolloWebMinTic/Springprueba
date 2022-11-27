@@ -32,7 +32,7 @@ const OlvidePassword = () => {
             <input
               type="submit"
               value="Ingresar"
-              className="uppercase bg-sky-700 text-white p-2 rounded-md w-full"
+              className="uppercase bg-red-400 text-white p-2 rounded-md w-full"
             />
             <div className="flex justify-between px-4 mt-5 text-slate-500 ">
               <Link to="/registro" className="">

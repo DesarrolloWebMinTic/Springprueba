@@ -43,7 +43,7 @@ const AsideVenta = ({ verAside, setAsideVentas }) => {
               </p>
             )}
           </div>
-          <p className="w-full text-center font-bold text-xl  mt-2 uppercase text-sky-700 flex justify-between px-4">
+          <p className="w-full text-center font-bold text-xl  mt-2 uppercase text-red-400 flex justify-between px-4">
             {" "}
             <i>SubTotal : </i>{" "}
             <span className="font-medium text-black">$ {precioTotal}</span>
@@ -53,7 +53,7 @@ const AsideVenta = ({ verAside, setAsideVentas }) => {
 
       <button
         type="button"
-        className="flex bg-sky-700 text-white rounded-lg uppercase font-medium hover:bg-sky-500 transition-colors w-full"
+        className="flex bg-red-400 text-white rounded-lg uppercase font-medium hover:bg-sky-500 transition-colors w-full"
       >
         <Link to="/venta" className="p-2 w-full capitalize">
           Ver detalles del pedido

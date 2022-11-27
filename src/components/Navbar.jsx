@@ -63,7 +63,7 @@ const Navbar = ({ texto, ruta, id, perfil, verVenta, verCompras }) => {
               className="hover:scale-110 text-black p-2  flex items-center cursor-pointer font-medium hover:border-b-blue-500 hover:border-b-2 transition-all"
               onClick={mostrarAside}
             >
-              <span className="bg-sky-700 text-white rounded-full px-2 top-10">
+              <span className="bg-red-400 text-white rounded-full px-2 top-10">
                 {ventas.length}
               </span>
 
@@ -134,7 +134,7 @@ const Navbar = ({ texto, ruta, id, perfil, verVenta, verCompras }) => {
           )} */}
           <button
             type="button"
-            className="bg-sky-700 text-xs   text-white rounded-lg uppercase font-medium hover:bg-sky-500 transition-colors"
+            className="bg-red-400 text-xs   text-white rounded-lg uppercase font-medium hover:bg-sky-500 transition-colors"
           >
             <Link to={"/"} className="p-1 text-center w-full flex text-sm">
               Cerrar Sesion
@@ -218,7 +218,7 @@ const Navbar = ({ texto, ruta, id, perfil, verVenta, verCompras }) => {
             )}
             <button
               type="button"
-              className="bg-sky-700 text-white rounded-lg uppercase font-medium hover:bg-sky-500 transition-colors"
+              className="bg-red-400 text-white rounded-lg uppercase font-medium hover:bg-sky-500 transition-colors"
             >
               <Link
                 to={"/"}
