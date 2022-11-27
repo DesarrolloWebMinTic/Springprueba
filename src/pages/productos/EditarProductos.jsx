@@ -22,8 +22,6 @@ const EditarProductos = ({ id, setModalEditar }) => {
 
   const { _id, nombre, description, precio, stock, image } = productoState;
 
-  //console.log(_id, nombre, description, typeof(precio), stock);
-
   const onSubmit = async (datos) => {
     //console.log(datos.precio);
 
@@ -38,7 +36,7 @@ const EditarProductos = ({ id, setModalEditar }) => {
       if (result.isConfirmed) {
         const formData = new FormData();
         formData.append("id", id);
-        formData.append("image", datos.file[0]);
+        formData.append("imageURL", datos.image);
         formData.append("nombre", datos.nombre);
         formData.append("description", datos.description);
         formData.append("precio", datos.precio);
@@ -99,13 +97,15 @@ const EditarProductos = ({ id, setModalEditar }) => {
                 name="nombre"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
                 placeholder="ej: Desinfectante"
-                value={nombre || ""}
-                onChange={(e) =>
+                // value={nombre || ""}
+                defaultValue={nombre || ""}
+                onChange={(e) => {
+                  console.log(e.target.name);
                   setProductoState({
                     ...productoState,
                     [e.target.name]: e.target.value,
-                  })
-                }
+                  });
+                }}
                 {...register("nombre")}
               />
             </div>
@@ -118,7 +118,8 @@ const EditarProductos = ({ id, setModalEditar }) => {
                 name="descripcion"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100 h-52"
                 placeholder="..."
-                value={description || ""}
+                // value={description || ""}
+                defaultValue={description || ""}
                 onChange={(e) =>
                   setProductoState({
                     ...productoState,
@@ -140,7 +141,8 @@ const EditarProductos = ({ id, setModalEditar }) => {
                   name="precio"
                   className="placeholder-slate-400 p-2 w-full bg-slate-100"
                   placeholder="ej: 200000"
-                  value={precio || ""}
+                  // value={precio || ""}
+                  defaultValue={precio || ""}
                   onChange={(e) =>
                     setProductoState({
                       ...productoState,
@@ -161,13 +163,14 @@ const EditarProductos = ({ id, setModalEditar }) => {
                 name="stock"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
                 placeholder="ej: 5"
-                value={stock || ""}
-                onChange={(e) =>
+                // value={stock || ""}
+                defaultValue={stock || ""}
+                onChange={(e) => {
                   setProductoState({
                     ...productoState,
                     [e.target.name]: e.target.value,
-                  })
-                }
+                  });
+                }}
                 {...register("stock")}
               />
             </div>
@@ -176,11 +179,13 @@ const EditarProductos = ({ id, setModalEditar }) => {
                 Imagen
               </label>
               <input
-                type="file"
+                type="text"
                 id="image"
                 name="image"
+                // value={image ? `${image.url}` : ""}
+                defaultValue={image ? `${image.url}` : ""}
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
-                {...register("file")}
+                {...register("image")}
               />
             </div>
             <input

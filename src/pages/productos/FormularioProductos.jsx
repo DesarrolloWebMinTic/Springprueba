@@ -16,12 +16,13 @@ const FormularioProductos = () => {
 
     const formData = new FormData();
 
-    formData.append("image", datos.file[0]);
+    formData.append("imageURL", datos.file);
     formData.append("nombre", datos.nombre);
     formData.append("description", datos.description);
     formData.append("precio", datos.precio);
     formData.append("stock", datos.stock);
 
+    // console.log(formData);
     submitProducto(formData);
 
     Swal.fire({
@@ -101,10 +102,10 @@ const FormularioProductos = () => {
             </div>
             <div className="mb-5">
               <label htmlFor="stock" className="font-medium">
-                Imagen
+                Imagen URL
               </label>
               <input
-                type="file"
+                type="text"
                 id="image"
                 className="block placeholder-slate-400 p-2 w-full bg-slate-100"
                 {...register("file")}

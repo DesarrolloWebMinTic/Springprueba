@@ -26,6 +26,7 @@ const ProductosProvider = ({ children }) => {
     // console.log(formData);
 
     try {
+      console.log(formData);  
       const { data } = await clienteAxios.post(`/productos/create`, formData);
       setGuardado(true);
       setTimeout(() => {
